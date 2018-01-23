@@ -33,7 +33,7 @@ protected:
 template<typename T>
 Stack<T>::~Stack(void)
 {
-	while (pTope != nullptr){ delete nodePop(); }
+	while (pTop != nullptr){ delete nodePop(); }
 }
 
 template<typename T>
@@ -44,6 +44,14 @@ void Stack<T>::push(T value)
 	pTmp->pNext = pTop;
 	pTop = pTmp;
 	count++;
+}
+
+template<typename T>
+Node<T>* Stack<T>::nodePop(void)
+{
+	Note<T> *ptmp = pTop;
+	if (pTop != nullptr) pTop = pTop->pNext;
+	return pTmp;
 }
 
 int main()
